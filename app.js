@@ -283,6 +283,7 @@ function App () {
                   }}>
                   <antd.Image
                     src={newImg}
+                    preview={false}
                     style={{
                       width: '100%',
                       height: '100%',
