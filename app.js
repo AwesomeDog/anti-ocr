@@ -16,6 +16,8 @@ function App () {
   const [fontWeight, setFontWeight] = React.useState(null)
   const [lineLength, setLineLength] = React.useState(null)
 
+  const [ocrNewImg, setOcrNewImg] = React.useState(true)
+
   const canvasRef = React.useRef(null)
 
   const resetArgs = () => {
@@ -312,12 +314,15 @@ function App () {
                   />
                 </antd.Card>
                 <antd.Card
-                  title="参考OCR效果"
+                  title={'参考OCR效果' + (ocrNewImg ? '(结果图)' : '(原图)')}
+                  extra={<antd.Tooltip title="OCR结果图片，若关闭则OCR原图" style={{ float: 'right' }}>
+                    <antd.Switch defaultChecked onChange={setOcrNewImg}/>
+                  </antd.Tooltip>}
                   style={{
                     minHeight: 300,
                     maxHeight: 300,
                   }}>
-                  <OcrBoard image={newImg}/>
+                  <OcrBoard image={ocrNewImg ? newImg : oldImg}/>
                 </antd.Card>
               </antd.Col>
             </antd.Row>
